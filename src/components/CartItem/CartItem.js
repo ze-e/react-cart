@@ -1,12 +1,18 @@
+//import React from 'react';
+
 function CartItem(props) {
 
   const product = props.product; //this looks nicer
 
- const [quantity, setQuantity] = React.useState(product.quantity);
+  const [quantity, setQuantity] = React.useState(product.quantity);
 
   function changeQuantity(e){
     setQuantity(e.target.value);
     props.changeQuantity(props.id, quantity);
+  }
+
+  function deleteItem(e){
+    props.deleteItem(props.id);
   }
   
   return (
@@ -28,7 +34,7 @@ function CartItem(props) {
             </div>
             <div className="col-xs-2">
                 <button type="button" className="btn btn-link btn-xs">
-                    <span className="glyphicon glyphicon-trash"> </span>
+                    <span className="glyphicon glyphicon-trash" onClick={deleteItem}> </span>
                 </button>
             </div>
         </div>

@@ -30,10 +30,18 @@ function changeQuantity(product, newQuantity){
   const newData = [...cartContents];
   const changedProduct = newData.find( item => item.id === product.id);
   if(changedProduct) {
-    console.log(changedProduct.quantity);
     changedProduct.quantity = newQuantity;
     setCartContents(newData);
-    console.log(changedProduct.quantity);
+  }
+}
+
+function deleteItem(product){
+  //very important! Do not modify cartContents directly. This mutates state!
+  const newData = [...cartContents];
+  const changedProduct = newData.findIndex( item => item.id === product.id);
+  if(changedProduct) {
+    newData.splice(changedProduct,1)
+    setCartContents(newData);
   }
 }
 
@@ -42,6 +50,7 @@ function changeQuantity(product, newQuantity){
       <Cart 
       products={cartContents}
       changeQuantity={changeQuantity}
+      deleteItem={deleteItem}
       />
     </div>
   );

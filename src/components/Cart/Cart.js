@@ -8,7 +8,6 @@ function Cart(props) {
         let newTotal = 0;
         props.products.forEach(product => newTotal += (product.price * product.quantity));
         setTotal(newTotal);
-        console.log(props.products);
     },[props.products])
 
     const [total, setTotal] = React.useState(0);
@@ -41,6 +40,7 @@ function Cart(props) {
                                 id={product.id}
                                 product={product} 
                                 changeQuantity={props.changeQuantity}
+                                deleteItem={props.deleteItem}
                                 />)
                             : 'Cart is empty :('
                         }
