@@ -1,4 +1,6 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
+
 import CartItem from '../CartItem/CartItem';
 
 function Cart(props) {
@@ -55,7 +57,7 @@ function Cart(props) {
                                 </div>
                                 <div className="col-xs-3">
                                     <button type="button" className="btn btn-success btn-block">
-                                        Checkout
+                                        <Link to="/checkout">Checkout</Link>
                                     </button>
                                 </div>
                             </div>
