@@ -30,8 +30,10 @@ function changeQuantity(product, newQuantity){
   const newData = [...cartContents];
   const changedProduct = newData.find( item => item.id === product.id);
   if(changedProduct) {
+    console.log(changedProduct.quantity);
     changedProduct.quantity = newQuantity;
     setCartContents(newData);
+    console.log(changedProduct.quantity);
   }
 }
 
