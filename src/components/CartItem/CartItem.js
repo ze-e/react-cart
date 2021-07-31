@@ -4,7 +4,8 @@ function CartItem(props) {
   const product = props.product; //this looks nicer
 
   function changeQuantity(e){
-    let newVal = e.target.value;
+    let newVal = parseInt(e.target.value);
+    if(!newVal || typeof newVal != "number" || newVal < 1) newVal = 1;
     props.changeQuantity(props.id, newVal);
   }
 

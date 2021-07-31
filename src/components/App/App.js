@@ -70,7 +70,10 @@ function App() {
     <Route exact path="/checkout">
       <Payment 
         total={total}
-      />
+    />
+    </Route>
+    <Route path="/">
+      <h1>404 Page Not Found 🤔</h1>
     </Route>
     </Switch>
     </div>
