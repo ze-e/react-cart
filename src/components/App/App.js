@@ -72,9 +72,9 @@ function App() {
         total={total}
     />
     </Route>
-    {/* <Route path="/">
+    <Route path="/">
       <h1>404 Page Not Found 🤔</h1>
-    </Route> */}
+    </Route>
     </Switch>
     </div>
   );
