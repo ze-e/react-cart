@@ -31,7 +31,7 @@ function App() {
 
     React.useEffect(()=>{
       let newTotal = 0;
-      cartContents.forEach(product => newTotal += (product.price * product.quantity));
+      cartContents.forEach(product => newTotal += product.quantity > 0 ? (product.price * product.quantity) : 0);
       setTotal(newTotal);
     },[cartContents])
 
