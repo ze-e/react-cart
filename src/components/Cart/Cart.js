@@ -42,7 +42,7 @@ function Cart(props) {
                                 changeQuantity={props.changeQuantity}
                                 deleteItem={props.deleteItem}
                                 />)
-                            : 'Cart is empty :('
+                            : <div>Cart is empty :(</div>
                         }
                             <div className="row">
                                 <div className="text-center">

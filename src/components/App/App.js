@@ -25,20 +25,25 @@ function App() {
 
 const [cartContents, setCartContents] = React.useState(data);
 
-function changeQuantity(product, newQuantity){
+function changeQuantity(productId, newQuantity){
   //very important! Do not modify cartContents directly. This mutates state!
   const newData = [...cartContents];
-  const changedProduct = newData.find( item => item.id === product.id);
+  const changedProduct = newData.find( item => item.id === productId);
+  console.log(productId,changedProduct);
   if(changedProduct) {
+    console.log(changedProduct.quantity);
+
     changedProduct.quantity = newQuantity;
+    console.log(changedProduct.quantity);
+
     setCartContents(newData);
   }
 }
 
-function deleteItem(product){
+function deleteItem(productId){
   //very important! Do not modify cartContents directly. This mutates state!
   const newData = [...cartContents];
-  const changedProduct = newData.findIndex( item => item.id === product.id);
+  const changedProduct = newData.findIndex( item => item.id === productId);
   if(changedProduct) {
     newData.splice(changedProduct,1)
     setCartContents(newData);

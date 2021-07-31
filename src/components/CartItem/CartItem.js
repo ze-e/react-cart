@@ -1,17 +1,20 @@
-import React from 'react';
+// import React from 'react';
 
 function CartItem(props) {
 
   const product = props.product; //this looks nicer
 
-  const [quantity, setQuantity] = React.useState(product.quantity);
+//  const [quantity, setQuantity] = React.useState(product.quantity);
 
   function changeQuantity(e){
-    setQuantity(e.target.value);
-    props.changeQuantity(props.id, quantity);
+    let newVal = e.target.value;
+    if(typeof newVal !== "number") newVal = parseInt(newVal);
+    //setQuantity(newVal);
+    //props.changeQuantity(props.id, quantity);
+    if(typeof newVal !== "number") props.changeQuantity(props.id, newVal);
   }
 
-  function deleteItem(e){
+  function deleteItem(){
     props.deleteItem(props.id);
   }
   
@@ -30,7 +33,7 @@ function CartItem(props) {
                 <h6><strong>{product.price && product.price}<span className="text-muted">x</span></strong></h6>
             </div>
             <div className="col-xs-4">
-                <input type="number" min="0" max="99" className="form-control input-sm" onChange={changeQuantity} value={quantity} />
+                <input type="text" className="form-control input-sm" onChange={changeQuantity} value={product.quantity} />
             </div>
             <div className="col-xs-2">
                 <button type="button" className="btn btn-link btn-xs">
