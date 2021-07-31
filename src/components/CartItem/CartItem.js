@@ -2,7 +2,10 @@ function CartItem(props) {
 
   const product = props.product; //this looks nicer
 
+ // const [quantity, setQuantity] = React.useState(product.quantity);
+
   function changeQuantity(e){
+    //setQuantity(e.target.value);
     props.changeQuantity(props.id, e.target.value);
   }
   
@@ -21,7 +24,7 @@ function CartItem(props) {
                 <h6><strong>{product.price && product.price}<span class="text-muted">x</span></strong></h6>
             </div>
             <div class="col-xs-4">
-                <input type="number" min="0" max="99" class="form-control input-sm" value={product.quantity && product.quantity} />
+                <input type="number" min="0" max="99" class="form-control input-sm" onChange={changeQuantity} value={product.quantity && product.quantity} />
             </div>
             <div class="col-xs-2">
                 <button type="button" class="btn btn-link btn-xs">
