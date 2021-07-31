@@ -1,6 +1,10 @@
 function CartItem(props) {
 
   const product = props.product; //this looks nicer
+
+  function changeQuantity(e){
+    props.changeQuantity(props.id, e.target.value);
+  }
   
   return (
     <div className="cart-item">
@@ -17,7 +21,7 @@ function CartItem(props) {
                 <h6><strong>{product.price && product.price}<span class="text-muted">x</span></strong></h6>
             </div>
             <div class="col-xs-4">
-                <input type="text" class="form-control input-sm" value={product.quantity && product.quantity} />
+                <input type="number" min="0" max="99" class="form-control input-sm" value={product.quantity && product.quantity} />
             </div>
             <div class="col-xs-2">
                 <button type="button" class="btn btn-link btn-xs">

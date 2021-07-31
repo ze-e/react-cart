@@ -34,10 +34,15 @@ function Cart(props) {
                             </div>
                         </div>
                         <div class="panel-body">
-                        {props.products.length > 0 ? props.products.map(product =>{
-                            <CartItem product={product} />
-                        })
-                        : 'Cart is empty :('
+                        {props.products.length > 0 ? 
+                            props.products.map(product =>
+                            <CartItem 
+                                key={product.id}
+                                id={product.id}
+                                product={product} 
+                                changeQuantity={props.changeQuantity}
+                                />)
+                            : 'Cart is empty :('
                         }
                             <div class="row">
                                 <div class="text-center">

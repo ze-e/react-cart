@@ -25,9 +25,22 @@ function App() {
 
 const [cartContents, setCartContents] = React.useState(data);
 
+function changeQuantity(product, newQuantity){
+  //very important! Do not modify cartContents directly. This mutates state!
+  const newData = [...cartContents];
+  const changedProduct = newData.find( item => item.id === product.id);
+  if(changedProduct) {
+    changedProduct.quantity = newQuantity;
+    setCartContents(newData);
+  }
+}
+
   return (
     <div className="app">
-      <Cart products={cartContents}/>
+      <Cart 
+      products={cartContents}
+      changeQuantity={changeQuantity}
+      />
     </div>
   );
 }
