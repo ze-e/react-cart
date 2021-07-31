@@ -56,9 +56,11 @@ function Cart(props) {
                                     <h4 className="text-right">Total <strong>{props.total}</strong></h4>
                                 </div>
                                 <div className="col-xs-3">
-                                    <button type="button" className="btn btn-success btn-block">
-                                        <Link to="/checkout">Checkout</Link>
-                                    </button>
+                                    <Link className="nounderline" to="/checkout">
+                                        <button type="button" className="btn btn-success btn-block">
+                                            Checkout
+                                        </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
