@@ -3,15 +3,6 @@ import CartItem from '../CartItem/CartItem';
 
 function Cart(props) {
 
-    React.useEffect(()=>{
-
-        let newTotal = 0;
-        props.products.forEach(product => newTotal += (product.price * product.quantity));
-        setTotal(newTotal);
-    },[props.products])
-
-    const [total, setTotal] = React.useState(0);
-
   return (
     <div className="cart">
         <div className="container">
@@ -60,7 +51,7 @@ function Cart(props) {
                         <div className="panel-footer">
                             <div className="row text-center">
                                 <div className="col-xs-9">
-                                    <h4 className="text-right">Total <strong>{total}</strong></h4>
+                                    <h4 className="text-right">Total <strong>{props.total}</strong></h4>
                                 </div>
                                 <div className="col-xs-3">
                                     <button type="button" className="btn btn-success btn-block">

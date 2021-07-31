@@ -26,27 +26,34 @@ function App() {
     //Note: irl data could come from api, except for quantity property, inserted into data after api resp
     //or, quantity could be seperate from data. for convenience, we'll use a single data object
 
-const [cartContents, setCartContents] = React.useState(data);
+    const [cartContents, setCartContents] = React.useState(data);
+    const [total, setTotal] = React.useState(0);
 
-function changeQuantity(productId, newQuantity){
-  //very important! Do not modify cartContents directly. This mutates state!
-  const newData = [...cartContents];
-  const changedProduct = newData.find( item => item.id === productId);
-  if(changedProduct) {
-    changedProduct.quantity = newQuantity;
-    setCartContents(newData);
-  }
-}
+    React.useEffect(()=>{
+      let newTotal = 0;
+      cartContents.forEach(product => newTotal += (product.price * product.quantity));
+      setTotal(newTotal);
+    },[cartContents])
 
-function deleteItem(productId){
-  //very important! Do not modify cartContents directly. This mutates state!
-  const newData = [...cartContents];
-  const changedProduct = newData.findIndex( item => item.id === productId);
-  if(changedProduct) {
-    newData.splice(changedProduct,1)
-    setCartContents(newData);
+  function changeQuantity(productId, newQuantity){
+    //very important! Do not modify cartContents directly. This mutates state!
+    const newData = [...cartContents];
+    const changedProduct = newData.find( item => item.id === productId);
+    if(changedProduct) {
+      changedProduct.quantity = newQuantity;
+      setCartContents(newData);
+    }
   }
-}
+
+  function deleteItem(productId){
+    //very important! Do not modify cartContents directly. This mutates state!
+    const newData = [...cartContents];
+    const changedProduct = newData.findIndex( item => item.id === productId);
+    if(changedProduct) {
+      newData.splice(changedProduct,1)
+      setCartContents(newData);
+    }
+  }
 
   return (
     <div className="app">
@@ -57,10 +64,13 @@ function deleteItem(productId){
       products={cartContents}
       changeQuantity={changeQuantity}
       deleteItem={deleteItem}
+      total={total}
       />
     </Route>
     <Route exact path="/checkout">
-      <Payment />
+      <Payment 
+        total={total}
+      />
     </Route>
     </Switch>
     </div>
