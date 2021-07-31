@@ -1,13 +1,14 @@
 import React from 'react'
+import CartItem from '../CartItem/CartItem';
 
 function Cart(props) {
 
     React.useEffect(()=>{
-        setTotal(()=>{
-            props.products.reduce((a,c)=>{
-                a + (c.price * c.quantity)
-            })
-        });
+
+        let newTotal = 0;
+        props.products.forEach(product => newTotal += (product.price * product.quantity));
+        setTotal(newTotal);
+        console.log(props.products);
     },[props.products])
 
     const [total, setTotal] = React.useState(0);
@@ -34,34 +35,10 @@ function Cart(props) {
                         </div>
                         <div class="panel-body">
                         {props.products.length > 0 ? props.products.map(product =>{
-                            <>
-                            <div class="row">
-                            <div class="col-xs-2">
-                                <img class="img-responsive" src={product.img ? product.img : 'http://placehold.it/100x70'} />
-                            </div>
-                            <div class="col-xs-4">
-                                <h4 class="product-name"><strong>{product.name}</strong></h4><h4><small>{product.description}</small></h4>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="col-xs-6 text-right">
-                                    <h6><strong>{product.price}<span class="text-muted">x</span></strong></h6>
-                                </div>
-                                <div class="col-xs-4">
-                                    <input type="text" class="form-control input-sm" value={product.quantity} />
-                                </div>
-                                <div class="col-xs-2">
-                                    <button type="button" class="btn btn-link btn-xs">
-                                        <span class="glyphicon glyphicon-trash"> </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        </>
+                            <CartItem product={product} />
                         })
                         : 'Cart is empty :('
                         }
-
                             <div class="row">
                                 <div class="text-center">
                                     <div class="col-xs-9">

@@ -1,3 +1,4 @@
+import React from 'react'
 import Cart from '../Cart/Cart';
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
     id: 1,
     name: "Product name",
     description: "Product description",
-    img: 'img',
+    img: 'http://placehold.it/100x70',
     price: 25.00,
     quantity: 1
 },
@@ -14,7 +15,7 @@ function App() {
     id:2,
     name: "Product name",
     description: "Product description",
-    img: 'img',
+    img: 'http://placehold.it/100x70',
     price: 25.00,
     quantity: 1
 }] 
