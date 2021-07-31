@@ -1,11 +1,11 @@
 import Cart from '../Cart/Cart';
-import Checkout from '../Checkout/Checkout';
+import Payment from '../Payment/Payment';
 
 function App() {
   return (
     <div className="app">
       <Cart />
-      <Checkout />
+      <Payment />
     </div>
   );
 }

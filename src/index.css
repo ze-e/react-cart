@@ -3,6 +3,10 @@
 @import url(./components/Checkout/Checkout.css);
 @import url(./components/Payment/Payment.css);
 
+/*vendor*/
+@import url(./vendor/bootstrap.css);
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
