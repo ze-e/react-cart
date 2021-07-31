@@ -1,5 +1,8 @@
 import React from 'react'
+import { Route, Switch } from 'react-router-dom';
+
 import Cart from '../Cart/Cart';
+import Payment from './Payment/Payment';
 
 function App() {
 
@@ -29,13 +32,8 @@ function changeQuantity(productId, newQuantity){
   //very important! Do not modify cartContents directly. This mutates state!
   const newData = [...cartContents];
   const changedProduct = newData.find( item => item.id === productId);
-  console.log(productId,changedProduct);
   if(changedProduct) {
-    console.log(changedProduct.quantity);
-
     changedProduct.quantity = newQuantity;
-    console.log(changedProduct.quantity);
-
     setCartContents(newData);
   }
 }
@@ -52,11 +50,19 @@ function deleteItem(productId){
 
   return (
     <div className="app">
+    <Switch>
+    {/* probably this will be changed to /cart in the future I assume */}
+    <Route exact path="/"> 
       <Cart 
       products={cartContents}
       changeQuantity={changeQuantity}
       deleteItem={deleteItem}
       />
+    </Route>
+    <Route exact path="/checkout">
+      <Payment />
+    </Route>
+    </Switch>
     </div>
   );
 }
